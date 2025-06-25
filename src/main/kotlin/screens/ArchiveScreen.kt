@@ -8,18 +8,18 @@ class ArchiveScreen(var archive: Archive): Menu<Note>("Список замето
         do {
             items.clear()
             super.addItem("Создать заметку") { createNote() }
-            archive.notes.forEach { note: Note -> super.addItem(note.content) {openNote(note)} }
+            archive.notes.forEach { note: Note -> super.addItem(note.name) {openNote(note)} }
             super.addItem("Выход") { }
         } while (super.displayMenu(archive.notes.toList()))
     }
     fun createNote() {
-        println("Введите текст заметки:")
-        val content = inputValidator.readStr()
+        println("Введите имя заметки:")
+        val name = inputValidator.readStr()
         when {
-            content.isBlank() -> println("Текст заметки не может быть пустым")
+            name.isBlank() -> println("Имя заметки не может быть пустым")
             else -> {
-                archive.addNote(Note(content))
-                println("Заметка \"$content\" создана")
+                archive.addNote(Note(name))
+                println("Заметка \"$name\" создана")
             }
         }
     }

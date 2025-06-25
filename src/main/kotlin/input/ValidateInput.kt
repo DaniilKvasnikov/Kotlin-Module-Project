@@ -9,7 +9,7 @@ class ValidateInput {
         val num = input.toIntOrNull()
         when {
             input.isBlank() -> println("Введите номер пункта")
-            num == null -> println("Введите число")
+            num == null -> {}
             num !in items.indices -> println("Пункта ${input.toInt()} не существует")
         }
         return num

@@ -1,5 +1,3 @@
 package data
 
-data class Note(var name: String) {
-    var content: String = ""
-}
+data class Note(var name: String, var content: String)

@@ -18,8 +18,15 @@ class ArchiveScreen(var archive: Archive): Menu<Note>("Список замето
         when {
             name.isBlank() -> println("Имя заметки не может быть пустым")
             else -> {
-                archive.addNote(Note(name))
-                println("Заметка \"$name\" создана")
+                println("Введите текст заметки:")
+                val context = inputValidator.readStr()
+                when {
+                    context.isBlank() -> println("Текст заметки не может быть пустым")
+                    else -> {
+                        archive.addNote(Note(name, context))
+                        println("Заметка \"$name\" создана")
+                    }
+                }
             }
         }
     }
